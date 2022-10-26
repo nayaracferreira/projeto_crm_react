@@ -1,0 +1,562 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.body {
+  width: 100%;
+  background-color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-weight: 300;
+}
+
+header {
+  width: 100%;
+  height: 100px;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  background-color: #fff;
+  z-index: 10;
+  display: flex;
+  border-bottom: solid #e3e7e4 2px;
+  box-shadow: 0px 2px 0px #dce0e2;
+}
+
+nav {
+  width: 100%;
+  display: flex;
+  align-content: center;
+  justify-content: space-evenly;
+}
+
+h1 {
+  width: 50%;
+  height: 50%;
+  text-align: center;
+  margin-top: 20px;
+  margin-left: 10px;
+  color: #399045;
+  font-size: 40px;
+  /* text-shadow: 2px 2px #2d392d8f; */
+  min-width: 240px;
+}
+
+nav a {
+  width: 50%;
+  height: 50%;
+  color: #399045;
+  text-align: center;
+  margin-top: 25px;
+  text-decoration: none;
+}
+
+nav img {
+  width: 40px;
+  height: 40px;
+}
+
+nav p {
+  font-weight: 500;
+}
+
+main {
+  width: 650px; /* Tentar 650px e no @media only colocar 100%*/
+  height: auto;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 100px;
+}
+
+#sigaNos {
+  margin-bottom: 15px;
+}
+/* MAIN DA INDEX ---------------------------------- */
+main img {
+  width: 350px;
+  height: 350px;
+}
+
+#calendario {
+  display: flex;
+  text-align: center;
+  margin-top: 10px;
+  width: 90%;
+  margin-left: 5%;
+}
+
+#calendario img {
+  width: 450px;
+  height: 300px;
+}
+
+#calendario p {
+  margin-top: 90px;
+  margin-right: 20px;
+  font-size: 110%;
+}
+
+#quemSomos {
+  display: flex;
+  margin-top: 20px;
+  text-align: center;
+}
+
+#quemSomos p {
+  margin-top: 30px;
+  margin-left: 20px;
+}
+
+#quemSomosTitulo {
+  margin-top: 50px;
+  font-size: 30px;
+}
+
+h2,
+h3 {
+  color: #75db8f;
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: 2%;
+}
+/* MAIN DO ENTRAR --------------------------------- */
+#mainEntrar {
+  margin-top: 30px;
+  border: solid 2px #62ab74;
+  border-radius: 20px;
+  padding-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#formEntrar {
+  margin-top: 5px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.btnAcesso {
+  background-color: #399045;
+  color: #020f04;
+  font-weight: 900;
+  border: none;
+  border-radius: 20px;
+  width: 30%;
+  cursor: pointer;
+  min-width: 105px;
+  min-height: 35px;
+  max-height: 40px;
+}
+/* MAIN AGENDAMENTO -------------------------------- */
+#consulteAgenda {
+  display: flexbox;
+  justify-content: center;
+  font-weight: 500;
+  color: #285e2f;
+}
+
+.telefoneDoCliente {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+}
+
+#formAgendamento {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  border: solid 2px #62ab74;
+  border-radius: 20px;
+  padding: 2%;
+  width: 86%;
+  margin-left: 5%;
+  justify-content: center;
+  cursor: pointer;
+}
+
+#formAgendamento label {
+  text-align: left;
+}
+
+.btnHolderAgendamento {
+  width: 100%;
+  margin-top: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btnAgendamento {
+  background-color: #399045;
+  color: #020f04;
+  font-weight: 900;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  min-width: 140px;
+  max-width: 150px;
+  min-height: 40px;
+  max-height: 50px;
+}
+
+/* MAIN CADASTRE ---------------------------------*/
+#cadastrese {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.formCadastre {
+  border: solid 2px #62ab74;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.formCadastre input {
+  display: flex;
+  width: 90%;
+  margin-left: 5px;
+}
+
+.formCadastre label {
+  margin-left: 5px;
+}
+
+.local {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.campo {
+  margin-top: 15px;
+}
+.divBtnEnviar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.btnEnviar {
+  background-color: #399045;
+  color: #020f04;
+  font-weight: 900;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  min-width: 90px;
+  max-width: 100px;
+  min-height: 40px;
+  max-height: 50px;
+}
+
+footer {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+footer h3 {
+  padding-top: 10px;
+  border-top: solid #e3e7e4 5px;
+}
+
+.redes {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  color: #fff;
+  padding: 0px;
+  justify-content: space-around;
+  border-bottom: solid #e3e7e4 2px;
+  box-shadow: 0px 2px 0px #dce0e2;
+  padding-bottom: 10px;
+}
+
+.redes img {
+  width: 40px;
+  height: 40px;
+}
+
+.cabecalho {
+  width: 100%;
+  height: 150px;
+  background: linear-gradient(#abecb6, #b8d5e4);
+  display: flex;
+  flex-direction: column;
+  padding: 0px;
+  text-align: left;
+}
+
+.cabecalho img {
+  margin-top: 10px;
+  width: 30px;
+  height: 30px;
+}
+
+#faleConosco {
+  color: #399045;
+  font-size: larger;
+}
+
+.cabecalho a {
+  text-decoration: none;
+  font-weight: 400;
+  color: black;
+}
+
+#cComercial {
+  margin-top: 10px;
+  margin-right: 20px;
+  text-align: right;
+}
+
+/* ================CLASSES UNICAS================ */
+h2 {
+  color: #399045;
+  /* text-shadow: 1px 1px #2d392d8f; */
+}
+
+.size-margin-90-5 {
+  width: 90%;
+  margin-left: 5%;
+}
+.gapColuna {
+  gap: 10px;
+}
+
+.columnFlexBox {
+  display: flex;
+  flex-direction: column;
+}
+
+.provisorio {
+  display: flex;
+  align-self: center;
+  margin-top: 10px;
+}
+
+/* ===================Calendário=================== */
+.react-calendar {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  border-radius: 20px;
+}
+
+.react-calendar button span {
+  font-weight: bold;
+  font-size: 1.25em;
+  color: #285e2f;
+}
+.react-calendar__month-view__weekdays abbr {
+  color: #285e2f;
+  font-weight: bold;
+  font-size: 1.15em;
+}
+
+.react-calendar__tile {
+  color: #285e2f;
+  font-size: 1em;
+}
+
+.react-calendar button {
+  border-radius: 20px;
+}
+
+/* =====================Clientes===================== */
+
+.agendamento {
+  display: flex;
+  width: 100%;
+  height: 500px;
+}
+.formAgenda {
+  width: 50%;
+  border: solid 2px #62ab74;
+  border-radius: 20px;
+  display: flex;
+  align-items: left;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.formAgenda label {
+  margin-left: 5%;
+}
+
+.formAgenda input {
+  display: flex;
+}
+
+input.cliente {
+  width: 90%;
+  margin-left: 5%;
+}
+
+.agendeServico {
+  width: 100%;
+  display: flex;
+}
+
+input.hora {
+  width: 23%;
+  margin-left: 5%;
+}
+
+input.servico {
+  width: 66%;
+  justify-content: right;
+}
+
+.btnPlus {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.btnPlus button {
+  background: #0065ca;
+  color: #fff;
+  font-size: larger;
+  font-weight: 900;
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  max-width: 40px;
+  min-width: 40px;
+  min-height: 40px;
+  max-height: 40px;
+  margin-top: 20%;
+}
+
+.btnFechar {
+  display: flex;
+  justify-content: right;
+  margin-right: 10%;
+  margin-bottom: 15px;
+}
+
+.btnFechar button {
+  background-color: #e83d3d;
+  color: #fff;
+  font-weight: 900;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  min-width: 90px;
+  max-width: 100px;
+  min-height: 40px;
+  max-height: 50px;
+  margin-top: 60%;
+}
+
+.formConsulta {
+  width: 50%;
+  margin-left: 1%;
+  border: solid 2px #62ab74;
+  border-radius: 20px;
+  align-items: right;
+  display: flex;
+  flex-direction: column;
+  margin-top: 2%;
+}
+
+#consulta {
+  display: flex;
+  width: 90%;
+  margin-left: 5%;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+#cliente {
+  display: flex;
+  width: 100%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  font-weight: 400;
+}
+
+#hora {
+  width: 10%;
+  margin-right: 5%;
+  align-self: center;
+  border: #62ab74;
+  font-weight: 400;
+}
+#servico {
+  width: 70%;
+}
+#consulta button {
+  width: 30px;
+  height: 30px;
+  align-self: center;
+  border-radius: 100%;
+  border: none;
+  background-color: #e83d3d;
+  color: #e3e7e4;
+  cursor: pointer;
+}
+
+/* ===================Media Querys=================== */
+@media only screen and (max-width: 680px) {
+  main {
+    width: 100%;
+  }
+
+  #calendario {
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #calendario img {
+    width: 100%;
+    max-width: 450px;
+  }
+  #calendario p {
+    margin-top: 10px;
+  }
+
+  #quemSomosTitulo {
+    margin-top: 15px;
+  }
+
+  #quemSomos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  #quemSomos img {
+    width: 100%;
+    max-width: 350px;
+  }
+
+  #consulteAgenda img {
+    width: 30px;
+    height: auto;
+  }
+}
