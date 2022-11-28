@@ -10,7 +10,7 @@ export default function Calendario() {
       <AppHeader />
       Link
       <main>
-        <Calendar action="/clients" onSubmit={onsubmit} />
+        <Calendar action="/agenda" />
       </main>
       <AppFooter />
     </div>

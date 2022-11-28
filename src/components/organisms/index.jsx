@@ -4,5 +4,14 @@ import AppFooter from "./AppFooter";
 import Cep from "./Cep";
 import ImaskCnpj from "./ImaskCnpj";
 import ImaskPhone from "./ImaskPhone";
+import Loading from "./Loading";
 
-export { AppHeader, AppHeaderHome, AppFooter, Cep, ImaskCnpj, ImaskPhone };
+export {
+  AppHeader,
+  AppHeaderHome,
+  AppFooter,
+  Cep,
+  ImaskCnpj,
+  ImaskPhone,
+  Loading,
+};

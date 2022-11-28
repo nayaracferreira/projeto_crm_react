@@ -1,9 +1,32 @@
 import React from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { AppFooter, AppHeader, Cep, ImaskCnpj, ImaskPhone } from "../organisms";
 
 export default function Cadastro() {
+  const [isLoading, setIsLoading] = useState(true);
+  // const requestEmpresa = {
+  //   method: "POST",
+  //   body: JSON.stringify(),
+  //   headers: new Headers({
+  //     "Content-Type": "application/json",
+  //     Accept: "application/json",
+  //   }),
+  // };
+  useEffect(() => {
+    fetch("http://127.0.0.1:5000/empresa", {
+      method: "POST",
+      body: JSON.stringify("empresa"),
+      headers: new Headers({
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data));
+    setIsLoading(false);
+  }, []);
+
   const [cadastroSenha, setCadastroSenha] = useState({});
   const [confSenha, setConfSenha] = useState({});
 
@@ -16,7 +39,9 @@ export default function Cadastro() {
     }
   };
 
-  return (
+  return isLoading ? (
+    <h1>Loading...</h1>
+  ) : (
     <div className="body">
       <AppHeader />
 

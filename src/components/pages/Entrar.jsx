@@ -1,9 +1,22 @@
 import React from "react";
+import { useState, useEffect } from "react";
 
-import { AppFooter, AppHeader } from "../organisms";
+import { AppFooter, AppHeader, Loading } from "../organisms";
 
-export default function Entrar() {
-  return (
+export default function Entrar(props) {
+  const [isLoading, setIsLoading] = useState(true);
+  const [empresa, setEmpresa] = useState([]);
+
+  useEffect(() => {
+    fetch("http://127.0.0.1:5000/empresa/all")
+      .then((response) => response.json())
+      .then((data) => setEmpresa(data));
+    setIsLoading(false);
+  }, []);
+
+  return isLoading ? (
+    <Loading />
+  ) : (
     <div className="body">
       <AppHeader />
       Link
@@ -11,13 +24,25 @@ export default function Entrar() {
         <div id="mainEntrar" className="size-margin-90-5">
           <h2 className="textShadowTitles">Acesse a Tera Agenda</h2>
 
-          <form action="/calendario" id="formEntrar">
+          <form action="/agenda" id="formEntrar">
+            {/* {props.empresa.map((empresa) => (<div>
+              <label htmlFor="login">Login</label>
+              <input
+                key={empresa.id}
+                name={empresa.email}
+                type="email"
+                id={empresa.id}
+                placeholder="Digite seu e-mail de cadastro"
+                required
+              />
+            </div>))} */}
             <div>
               <label htmlFor="login">Login</label>
               <input
-                name="login"
+                key={empresa.id}
+                name={empresa.email}
                 type="email"
-                id="login"
+                id={empresa.id}
                 placeholder="Digite seu e-mail de cadastro"
                 required
               />
@@ -26,9 +51,10 @@ export default function Entrar() {
             <div>
               <label htmlFor="senha">Senha</label>
               <input
-                name="senha"
+                key={empresa.id}
+                name={empresa.senha}
                 type="password"
-                id="senha"
+                id={empresa.id}
                 placeholder="Digite sua senha"
                 minLength="8"
                 maxLength="8"
