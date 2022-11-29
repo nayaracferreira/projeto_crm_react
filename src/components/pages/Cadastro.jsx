@@ -5,25 +5,23 @@ import { AppFooter, AppHeader, Cep, ImaskCnpj, ImaskPhone } from "../organisms";
 
 export default function Cadastro() {
   const [isLoading, setIsLoading] = useState(true);
-  // const requestEmpresa = {
-  //   method: "POST",
-  //   body: JSON.stringify(),
-  //   headers: new Headers({
-  //     "Content-Type": "application/json",
-  //     Accept: "application/json",
-  //   }),
-  // };
+  const [empresa, setEmpresa] = useState([]);
+  const [razao, setRazao, email, setEmail, senha, setSenha] = useState([]);
   useEffect(() => {
     fetch("http://127.0.0.1:5000/empresa", {
       method: "POST",
-      body: JSON.stringify("empresa"),
-      headers: new Headers({
+      headers: {
         "Content-Type": "application/json",
-        Accept: "application/json",
+      },
+      mode: "cors",
+      body: JSON.stringify({
+        razao: setRazao,
+        email: setEmail,
+        senha: setSenha,
       }),
     })
       .then((response) => response.json())
-      .then((data) => console.log(data));
+      .then((data) => setEmpresa(data));
     setIsLoading(false);
   }, []);
 
@@ -52,6 +50,10 @@ export default function Cadastro() {
             <label htmlFor="razaoSocial">Razão Social*</label>
             <input
               className="razaoSocial"
+              key={empresa.id}
+              id={empresa.id}
+              onBlur={razao}
+              name="razao"
               type="text"
               placeholder="Informe a Razão Social"
               required
@@ -65,6 +67,9 @@ export default function Cadastro() {
           <div>
             <label htmlFor="email">E-mail*</label>
             <input
+              key={empresa.id}
+              id={empresa.id}
+              onBlur={email}
               name="email"
               type="email"
               placeholder="...@email.com"
@@ -78,7 +83,9 @@ export default function Cadastro() {
             <label htmlFor="cadastroSenha">Senha*</label>
             <input
               onBlur={(event) => setCadastroSenha(event.target.value)}
-              name="cadastroSenha"
+              key={empresa.id}
+              id={empresa.id}
+              name={senha}
               type="password"
               placeholder="Informe a senha"
               minLength="8"

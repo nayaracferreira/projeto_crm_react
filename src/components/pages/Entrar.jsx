@@ -5,12 +5,22 @@ import { AppFooter, AppHeader, Loading } from "../organisms";
 
 export default function Entrar(props) {
   const [isLoading, setIsLoading] = useState(true);
-  const [empresa, setEmpresa] = useState([]);
+  const [email, setEmail, senha, setSenha] = useState([]);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:5000/empresa/all")
+    fetch("http://127.0.0.1:5000/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      mode: "cors",
+      body: JSON.stringify({
+        email: setEmail,
+        senha: setSenha,
+      }),
+    })
       .then((response) => response.json())
-      .then((data) => setEmpresa(data));
+      .then((data) => console.log(data));
     setIsLoading(false);
   }, []);
 
@@ -25,24 +35,14 @@ export default function Entrar(props) {
           <h2 className="textShadowTitles">Acesse a Tera Agenda</h2>
 
           <form action="/agenda" id="formEntrar">
-            {/* {props.empresa.map((empresa) => (<div>
-              <label htmlFor="login">Login</label>
-              <input
-                key={empresa.id}
-                name={empresa.email}
-                type="email"
-                id={empresa.id}
-                placeholder="Digite seu e-mail de cadastro"
-                required
-              />
-            </div>))} */}
             <div>
               <label htmlFor="login">Login</label>
               <input
-                key={empresa.id}
-                name={empresa.email}
+                //key={empresa.id}
+                //id={empresa.id}
+                onBlur={email}
+                name="email"
                 type="email"
-                id={empresa.id}
                 placeholder="Digite seu e-mail de cadastro"
                 required
               />
@@ -51,10 +51,11 @@ export default function Entrar(props) {
             <div>
               <label htmlFor="senha">Senha</label>
               <input
-                key={empresa.id}
-                name={empresa.senha}
+                //key={empresa.id}
+                //id={empresa.id}
+                onBlur={senha}
+                name="senha"
                 type="password"
-                id={empresa.id}
                 placeholder="Digite sua senha"
                 minLength="8"
                 maxLength="8"

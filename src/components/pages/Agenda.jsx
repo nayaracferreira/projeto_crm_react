@@ -1,8 +1,22 @@
 import React from "react";
-import { AppFooter, AppHeader } from "../organisms";
+import { useState, useEffect } from "react";
+
+import { AppFooter, AppHeader, Loading } from "../organisms";
 
 export default function Agenda() {
-  return (
+  const [isLoading, setIsLoading] = useState(true);
+  //const [empresa, setEmpresa] = useState([]);
+
+  useEffect(() => {
+    fetch("http://127.0.0.1:5000/empresa/all")
+      .then((response) => response.json())
+      .then((data) => console.log(data));
+    setIsLoading(false);
+  }, []);
+
+  return isLoading ? (
+    <Loading />
+  ) : (
     <div className="body">
       <AppHeader />
       Link
@@ -28,29 +42,31 @@ export default function Agenda() {
                 <p id="servico">Perda de precisão na tarraxa do baixo</p>
                 <button>x</button>
               </div>
-            </div>
-            <div id="consulta">
-              <p id="cliente">Tré Cool</p>
-              <div className="agendeServico">
-                <p id="hora">14:00</p>
-                <p id="servico">Troca de molas do pedal de Bumbo da bateria</p>
-                <button>x</button>
+              <div id="consulta">
+                <p id="cliente">Tré Cool</p>
+                <div className="agendeServico">
+                  <p id="hora">14:00</p>
+                  <p id="servico">
+                    Troca de molas do pedal de Bumbo da bateria
+                  </p>
+                  <button>x</button>
+                </div>
               </div>
-            </div>
-            <div id="consulta">
-              <p id="cliente">Chris Martin</p>
-              <div className="agendeServico">
-                <p id="hora">15:30</p>
-                <p id="servico">Desgaste entre as teclas do piano</p>
-                <button>x</button>
+              <div id="consulta">
+                <p id="cliente">Chris Martin</p>
+                <div className="agendeServico">
+                  <p id="hora">15:30</p>
+                  <p id="servico">Desgaste entre as teclas do piano</p>
+                  <button>x</button>
+                </div>
               </div>
-            </div>
-            <div id="consulta">
-              <p id="cliente">Carlos Santana</p>
-              <div className="agendeServico">
-                <p id="hora">16:30</p>
-                <p id="servico">Problemas no captador da guitarra</p>
-                <button>x</button>
+              <div id="consulta">
+                <p id="cliente">Carlos Santana</p>
+                <div className="agendeServico">
+                  <p id="hora">16:30</p>
+                  <p id="servico">Problemas no captador da guitarra</p>
+                  <button>x</button>
+                </div>
               </div>
             </div>
           </form>
