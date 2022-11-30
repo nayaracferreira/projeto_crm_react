@@ -1,13 +1,13 @@
 import { useState } from "react";
 
 export default function Cep() {
-  const [cep, setCep] = useState({});
-  const [endereco, setEndereco] = useState({});
-  const [numero, setNumero] = useState({});
-  const [bloco, setBloco] = useState({});
-  const [bairro, setBairro] = useState({});
-  const [cidade, setCidade] = useState({});
-  const [uf, setUf] = useState({});
+  const [cep, setCep] = useState([]);
+  const [endereco, setEndereco] = useState([]);
+  const [numero, setNumero] = useState([]);
+  const [bloco, setBloco] = useState([]);
+  const [bairro, setBairro] = useState([]);
+  const [cidade, setCidade] = useState([]);
+  const [uf, setUf] = useState([]);
 
   fetch("http://127.0.0.1:5000/empresa", {
     method: "POST",

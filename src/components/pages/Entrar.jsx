@@ -3,25 +3,24 @@ import { useState, useEffect } from "react";
 
 import { AppFooter, AppHeader, Loading } from "../organisms";
 
-export default function Entrar(props) {
-  const [isLoading, setIsLoading] = useState(true);
-  const [empresa, setEmpresa] = useState(true);
+export default function Entrar() {
+  const [isLoading, setIsLoading] = useState(false);
+  const [email, setEmail] = useState([]);
+  const [senha, setSenha] = useState([]);
 
-  useEffect(() => {
+  const loginClick = () => {
     fetch("http://127.0.0.1:5000/login", {
       method: "POST",
       headers: {
-        Accept: "application/json",
         "Content-Type": "application/json",
       },
       mode: "cors",
-      body: JSON.stringify(setEmpresa),
+      body: JSON.stringify({ email: email, senha: senha }),
     })
       .then((response) => response.json())
-      //.catch(e =>{console.log("e",e)})
       .then((data) => console.log(data));
-    setIsLoading(false);
-  }, []);
+    setIsLoading(true);
+  };
 
   return isLoading ? (
     <Loading />
@@ -33,14 +32,13 @@ export default function Entrar(props) {
         <div id="mainEntrar" className="size-margin-90-5">
           <h2 className="textShadowTitles">Acesse a Tera Agenda</h2>
 
-          <form action="/agenda" id="formEntrar">
+          <form action="/agenda" id="formEntrar" type="onsubmit">
             <div>
               <label htmlFor="login">Login</label>
               <input
-                key={empresa.id}
-                id={empresa.id}
+                onBlur={(event) => setEmail(event.target.value)}
+                defaulvalue={email}
                 tabIndex={4}
-                onBlur={empresa.email}
                 name="email"
                 type="email"
                 placeholder="Digite seu e-mail de cadastro"
@@ -51,10 +49,9 @@ export default function Entrar(props) {
             <div>
               <label htmlFor="senha">Senha</label>
               <input
-                key={empresa.id}
-                id={empresa.id}
+                onBlur={(event) => setSenha(event.target.value)}
+                defaulvalue={senha}
                 tabIndex={12}
-                onBlur={empresa.senha}
                 name="senha"
                 type="password"
                 placeholder="Digite sua senha"
@@ -70,6 +67,7 @@ export default function Entrar(props) {
             </label>
 
             <button
+              onClick={loginClick}
               type="onSubmit"
               aria-label="Entrar: Encaminha para a página do calendário"
               className="btnAcesso"
