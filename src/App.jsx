@@ -3,7 +3,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./components/pages/Home";
 import Entrar from "./components/pages/Entrar";
 import Cadastro from "./components/pages/Cadastro";
-import Calendario from "./components/pages/Calendario";
 import Agenda from "./components/pages/Agenda";
 
 function App() {
@@ -13,7 +12,6 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/entrar" element={<Entrar />} />
         <Route path="/cadastro" element={<Cadastro />} />
-        <Route path="/calendario" element={<Calendario />} />
         <Route path="/agenda" element={<Agenda />} />
       </Routes>
     </BrowserRouter>

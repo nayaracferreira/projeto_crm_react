@@ -1,47 +1,34 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function Cep() {
-  const [empresa, setEmpresa] = useState([]);
-  const [
-    cep,
-    setCep,
-    enderecoo,
-    setEnderecoo,
-    numero,
-    setNumero,
-    bloco,
-    setBloco,
-    bairro,
-    setBairro,
-    cidade,
-    setCidade,
-    uf,
-    setUf,
-  ] = useState([]);
+  const [cep, setCep] = useState({});
+  const [endereco, setEndereco] = useState({});
+  const [numero, setNumero] = useState({});
+  const [bloco, setBloco] = useState({});
+  const [bairro, setBairro] = useState({});
+  const [cidade, setCidade] = useState({});
+  const [uf, setUf] = useState({});
 
-  useEffect(() => {
-    fetch("http://127.0.0.1:5000/empresa", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      mode: "cors",
-      body: JSON.stringify({
-        cep: setCep,
-        endereco: setEnderecoo,
-        numero: setNumero,
-        bloco: setBloco,
-        bairro: setBairro,
-        cidade: setCidade,
-        uf,
-        setUf,
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => setEmpresa(data));
-  }, []);
+  fetch("http://127.0.0.1:5000/empresa", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    mode: "cors",
+    body: JSON.stringify({
+      cep: cep,
+      endereco: endereco,
+      numero: numero,
+      bloco: bloco,
+      bairro: bairro,
+      cidade: cidade,
+      uf: uf,
+    }),
+  })
+    .then((response) => response.json())
+    .then((data) => console.log(data));
 
-  const [endereco, setEndereco] = useState({
+  const [address, setAddress] = useState({
     logradouro: "",
     localidade: "",
     bairro: "",
@@ -52,7 +39,7 @@ export default function Cep() {
       method: "GET",
     }).then((response) => {
       response.json().then((dados) => {
-        setEndereco(dados);
+        setAddress(dados);
       });
     });
   };
@@ -62,9 +49,9 @@ export default function Cep() {
       <div>
         <label htmlFor="cep">Cep*</label>
         <input
-          key={empresa.id}
-          id={empresa.id}
-          name={cep}
+          onFocus={(event) => setCep(event.target.value)}
+          defaultvalue={cep}
+          name="cep"
           type="text"
           onBlur={getCep}
           placeholder="Ex:012345-678"
@@ -75,10 +62,9 @@ export default function Cep() {
       <div>
         <label htmlFor="logradouro">Endereço*</label>
         <input
-          defaultValue={endereco.logradouro}
-          key={empresa.id}
-          id={empresa.id}
-          onBlur={enderecoo}
+          defaultValue={address.logradouro}
+          onBlur={(event) => setEndereco(event.target.value)}
+          defaultvalue={endereco}
           name="endereco"
           type="text"
           placeholder="Ex:Rua Vinte e Cindo de ..."
@@ -88,9 +74,8 @@ export default function Cep() {
       <div>
         <label htmlFor="numero">Número*</label>
         <input
-          key={empresa.id}
-          id={empresa.id}
-          onBlur={numero}
+          onBlur={(event) => setNumero(event.target.value)}
+          defaultvalue={numero}
           name="numero"
           type="text"
           placeholder="Ex:123"
@@ -101,9 +86,8 @@ export default function Cep() {
       <div>
         <label htmlFor="blocoSala">Bloco/Sala</label>
         <input
-          key={empresa.id}
-          id={empresa.id}
-          onBlur={bloco}
+          onBlur={(event) => setBloco(event.target.value)}
+          defaultvalue={bloco}
           name="bloco"
           type="text"
           placeholder="Número do bloco ou sala"
@@ -113,10 +97,9 @@ export default function Cep() {
       <div>
         <label htmlFor="bairro">Bairro*</label>
         <input
-          defaultValue={endereco.bairro}
-          key={empresa.id}
-          id={empresa.id}
-          onBlur={bairro}
+          defaultValue={address.bairro}
+          onBlur={(event) => setBairro(event.target.value)}
+          defaultvalue={bairro}
           name="bairro"
           type="text"
           placeholder="Informe o bairro"
@@ -126,10 +109,9 @@ export default function Cep() {
       <div>
         <label htmlFor="localidade">Cidade*</label>
         <input
-          defaultValue={endereco.localidade}
-          key={empresa.id}
-          id={empresa.id}
-          onBlur={cidade}
+          defaultValue={address.localidade}
+          onBlur={(event) => setCidade(event.target.value)}
+          defaultvalue={cidade}
           name="cidade"
           type="text"
           placeholder="Informe a cidade"
@@ -139,10 +121,9 @@ export default function Cep() {
       <div>
         <label htmlFor="uf">UF*</label>
         <input
-          defaultValue={endereco.uf}
-          key={empresa.id}
-          id={empresa.id}
-          onBlur={uf}
+          defaultValue={address.uf}
+          onBlur={(event) => setUf(event.target.value)}
+          defaultvalue={uf}
           name="uf"
           type="text"
           placeholder="Informe a UF"

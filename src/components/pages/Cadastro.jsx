@@ -1,13 +1,16 @@
 import React from "react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { AppFooter, AppHeader, Cep, ImaskCnpj, ImaskPhone } from "../organisms";
 
 export default function Cadastro() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [empresa, setEmpresa] = useState([]);
-  const [razao, setRazao, email, setEmail, senha, setSenha] = useState([]);
-  useEffect(() => {
+  //const [isLoading, setIsLoading] = useState(true);
+  const [razao, setRazao] = useState([]);
+  const [email, setEmail] = useState([]);
+  const [cadastroSenha, setCadastroSenha] = useState({});
+  const [confSenha, setConfSenha] = useState({});
+
+  const enviarClick = () => {
     fetch("http://127.0.0.1:5000/empresa", {
       method: "POST",
       headers: {
@@ -15,18 +18,15 @@ export default function Cadastro() {
       },
       mode: "cors",
       body: JSON.stringify({
-        razao: setRazao,
-        email: setEmail,
-        senha: setSenha,
+        razao: razao,
+        email: email,
+        senha: cadastroSenha,
       }),
     })
       .then((response) => response.json())
-      .then((data) => setEmpresa(data));
-    setIsLoading(false);
-  }, []);
-
-  const [cadastroSenha, setCadastroSenha] = useState({});
-  const [confSenha, setConfSenha] = useState({});
+      .then((data) => console.log(data));
+    //setIsLoading(false);
+  };
 
   const validaSenha = (event) => {
     if (cadastroSenha === confSenha) {
@@ -37,9 +37,9 @@ export default function Cadastro() {
     }
   };
 
-  return isLoading ? (
-    <h1>Loading...</h1>
-  ) : (
+  //isLoading ? (
+  // <h1>Loading...</h1>):
+  return (
     <div className="body">
       <AppHeader />
 
@@ -50,9 +50,8 @@ export default function Cadastro() {
             <label htmlFor="razaoSocial">Razão Social*</label>
             <input
               className="razaoSocial"
-              key={empresa.id}
-              id={empresa.id}
-              onBlur={razao}
+              onBlur={(event) => setRazao(event.target.value)}
+              defaulvalue={razao}
               name="razao"
               type="text"
               placeholder="Informe a Razão Social"
@@ -67,9 +66,8 @@ export default function Cadastro() {
           <div>
             <label htmlFor="email">E-mail*</label>
             <input
-              key={empresa.id}
-              id={empresa.id}
-              onBlur={email}
+              onBlur={(event) => setEmail(event.target.value)}
+              defaulvalue={email}
               name="email"
               type="email"
               placeholder="...@email.com"
@@ -83,9 +81,8 @@ export default function Cadastro() {
             <label htmlFor="cadastroSenha">Senha*</label>
             <input
               onBlur={(event) => setCadastroSenha(event.target.value)}
-              key={empresa.id}
-              id={empresa.id}
-              name={senha}
+              defaulvalue={cadastroSenha}
+              name="senha"
               type="password"
               placeholder="Informe a senha"
               minLength="8"
@@ -112,7 +109,12 @@ export default function Cadastro() {
           </div>
 
           <div className="divBtnEnviar">
-            <button type="onSubmit" value="Validar" className="btnEnviar">
+            <button
+              onClick={enviarClick}
+              type="onSubmit"
+              value="Validar"
+              className="btnEnviar"
+            >
               Enviar
             </button>
           </div>

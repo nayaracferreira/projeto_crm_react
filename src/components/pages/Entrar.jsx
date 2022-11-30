@@ -5,21 +5,20 @@ import { AppFooter, AppHeader, Loading } from "../organisms";
 
 export default function Entrar(props) {
   const [isLoading, setIsLoading] = useState(true);
-  const [email, setEmail, senha, setSenha] = useState([]);
+  const [empresa, setEmpresa] = useState(true);
 
   useEffect(() => {
     fetch("http://127.0.0.1:5000/login", {
       method: "POST",
       headers: {
+        Accept: "application/json",
         "Content-Type": "application/json",
       },
       mode: "cors",
-      body: JSON.stringify({
-        email: setEmail,
-        senha: setSenha,
-      }),
+      body: JSON.stringify(setEmpresa),
     })
       .then((response) => response.json())
+      //.catch(e =>{console.log("e",e)})
       .then((data) => console.log(data));
     setIsLoading(false);
   }, []);
@@ -38,9 +37,10 @@ export default function Entrar(props) {
             <div>
               <label htmlFor="login">Login</label>
               <input
-                //key={empresa.id}
-                //id={empresa.id}
-                onBlur={email}
+                key={empresa.id}
+                id={empresa.id}
+                tabIndex={4}
+                onBlur={empresa.email}
                 name="email"
                 type="email"
                 placeholder="Digite seu e-mail de cadastro"
@@ -51,9 +51,10 @@ export default function Entrar(props) {
             <div>
               <label htmlFor="senha">Senha</label>
               <input
-                //key={empresa.id}
-                //id={empresa.id}
-                onBlur={senha}
+                key={empresa.id}
+                id={empresa.id}
+                tabIndex={12}
+                onBlur={empresa.senha}
                 name="senha"
                 type="password"
                 placeholder="Digite sua senha"
@@ -69,7 +70,7 @@ export default function Entrar(props) {
             </label>
 
             <button
-              type="submit"
+              type="onSubmit"
               aria-label="Entrar: Encaminha para a página do calendário"
               className="btnAcesso"
             >
