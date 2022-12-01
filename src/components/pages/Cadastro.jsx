@@ -1,10 +1,10 @@
 import React from "react";
 import { useState } from "react";
 
-import { AppFooter, AppHeader, Cep, ImaskCnpj, ImaskPhone } from "../organisms";
+import { AppFooter, AppHeader, ImaskCnpj, ImaskPhone, Cep } from "../organisms";
 
 export default function Cadastro() {
-  //const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [razao, setRazao] = useState([]);
   const [email, setEmail] = useState([]);
   const [cadastroSenha, setCadastroSenha] = useState({});
@@ -25,7 +25,7 @@ export default function Cadastro() {
     })
       .then((response) => response.json())
       .then((data) => console.log(data));
-    //setIsLoading(false);
+    setIsLoading(true);
   };
 
   const validaSenha = (event) => {
@@ -37,9 +37,9 @@ export default function Cadastro() {
     }
   };
 
-  //isLoading ? (
-  // <h1>Loading...</h1>):
-  return (
+  return isLoading ? (
+    <h1>Loading...</h1>
+  ) : (
     <div className="body">
       <AppHeader />
 
@@ -60,7 +60,6 @@ export default function Cadastro() {
           </div>
 
           <ImaskCnpj />
-
           <ImaskPhone />
 
           <div>

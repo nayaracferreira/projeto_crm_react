@@ -1,5 +1,7 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+
+import { Link } from "react-router-dom";
 
 import { AppFooter, AppHeader, Loading } from "../organisms";
 
@@ -18,7 +20,7 @@ export default function Entrar() {
       body: JSON.stringify({ email: email, senha: senha }),
     })
       .then((response) => response.json())
-      .then((data) => console.log(data));
+      .then((data) => setSenha(data));
     setIsLoading(true);
   };
 
@@ -32,7 +34,8 @@ export default function Entrar() {
         <div id="mainEntrar" className="size-margin-90-5">
           <h2 className="textShadowTitles">Acesse a Tera Agenda</h2>
 
-          <form action="/agenda" id="formEntrar" type="onsubmit">
+          <form id="formEntrar" onSubmit={loginClick}>
+            <Link to={"/agenda"} />
             <div>
               <label htmlFor="login">Login</label>
               <input
