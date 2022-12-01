@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { AppFooter, AppHeader, Loading } from "../organisms";
 
@@ -9,6 +9,7 @@ export default function Entrar() {
   const [isLoading, setIsLoading] = useState(false);
   const [email, setEmail] = useState([]);
   const [senha, setSenha] = useState([]);
+  const navigate = useNavigate();
 
   const loginClick = () => {
     fetch("http://127.0.0.1:5000/login", {
@@ -20,7 +21,16 @@ export default function Entrar() {
       body: JSON.stringify({ email: email, senha: senha }),
     })
       .then((response) => response.json())
-      .then((data) => setSenha(data));
+
+      .then((data) => {
+        if (data.Sucesso === true) {
+          navigate("/agenda");
+        } else {
+          navigate("/entrar");
+          window.alert("Email ou senha inválidos!");
+        }
+      });
+
     setIsLoading(true);
   };
 
