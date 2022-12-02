@@ -46,11 +46,10 @@ export default function Cadastro() {
     })
       .then((response) => response.json())
       .then((data) => {
-        if (data === true) {
-          navigate("entrar");
+        if (data) {
+          navigate("/entrar");
         } else {
-          navigate("/cadastro");
-          window.alert("Verifique os dados informados!");
+          navigate("/entrar");
         }
       });
     setIsLoading(false);
@@ -160,7 +159,7 @@ export default function Cadastro() {
               <input
                 defaultValue={address.logradouro}
                 onBlur={(event) => setEndereco(event.target.value)}
-                //defaultvalue={endereco}
+                defaultvalue={endereco}
                 name="endereco"
                 type="text"
                 placeholder="Ex:Rua Vinte e Cindo de ..."
@@ -195,7 +194,7 @@ export default function Cadastro() {
               <input
                 defaultValue={address.bairro}
                 onBlur={(event) => setBairro(event.target.value)}
-                //defaultvalue={bairro}
+                defaultvalue={bairro}
                 name="bairro"
                 type="text"
                 placeholder="Informe o bairro"
@@ -207,7 +206,7 @@ export default function Cadastro() {
               <input
                 defaultValue={address.localidade}
                 onBlur={(event) => setCidade(event.target.value)}
-                //defaultvalue={cidade}
+                defaultvalue={cidade}
                 name="cidade"
                 type="text"
                 placeholder="Informe a cidade"
@@ -219,7 +218,7 @@ export default function Cadastro() {
               <input
                 defaultValue={address.uf}
                 onBlur={(event) => setUf(event.target.value)}
-                //defaultValue={uf}
+                defaultvalue={uf}
                 name="uf"
                 type="text"
                 placeholder="Informe a UF"
