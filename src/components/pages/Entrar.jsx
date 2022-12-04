@@ -24,9 +24,10 @@ export default function Entrar() {
 
       .then((data) => {
         if (data.Sucesso === true) {
+          localStorage.setItem("emailLocalStorage", email);
           navigate("/agenda");
         } else {
-          navigate("/entrar");
+          <Link to={"/entrar"} onSubmit={loginClick} />;
           window.alert("Email ou senha inválidos!");
         }
       });

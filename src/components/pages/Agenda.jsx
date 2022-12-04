@@ -4,9 +4,9 @@ import { IMaskInput } from "react-imask";
 import { AppFooter, AppHeader, DeleteButton } from "../organisms";
 
 export default function Agenda() {
-  // -------------------------------------------------------------------------------------------------------------------- //
+  //  -------------------------------------------------------------------------------------------------------------------- //
 
-  const emailTeste = "teste@com.br";
+  const emailTeste = localStorage.getItem("emailLocalStorage");
 
   let [listaTodosValores, setlistaTodosValores] = useState([
     { Dia: "Teste", Email: emailTeste, Nota: "Teste" },
@@ -85,34 +85,39 @@ export default function Agenda() {
       <AppHeader />
       Link
       <main>
-        <div>
+        <div className="mainAgenda">
           {/* <button onClick={PegarTudoMesComEmail}>Pegar todo Mes</button>  botaõa para teste*/}
 
           <div>
-            <form>
+            <form className="formAgenda">
               <label>
-                DIA:
+                <b>Dia:</b>
                 <IMaskInput
                   mask="00/00/00"
                   type="text"
                   value={valorDia}
                   onChange={eventPuxarInputsDias}
+                  placeholder="DD/MM/AA"
                 />
               </label>
 
               <label>
-                NOTA:
-                <input
+                <b>Nota:</b>
+
+                <textarea
                   type="text"
                   value={valorNota}
                   onChange={eventPuxarInputsNotas}
+                  placeholder="Texto..."
                 />
               </label>
+
+              <button className="btnPlus" onClick={eventAdicionarDia}>
+                +
+              </button>
             </form>
-            <button onClick={eventAdicionarDia}>
-              Adicionar ao novo no Mes
-            </button>
-            <div>
+
+            <div className="formAgendaOculta">
               {listaTodosValores.map((notaDeleteComp) => (
                 <DeleteButton
                   key={notaDeleteComp.Nota}

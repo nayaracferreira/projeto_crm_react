@@ -156,56 +156,98 @@ h3 {
   min-height: 35px;
   max-height: 40px;
 }
-/* MAIN AGENDAMENTO -------------------------------- */
-#consulteAgenda {
-  display: flexbox;
-  justify-content: center;
-  font-weight: 500;
-  color: #285e2f;
-}
-
-.telefoneDoCliente {
-  text-align: right;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  justify-content: center;
-}
-
-#formAgendamento {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
+/* MAIN AGENDA -------------------------------- */
+.mainAgenda {
+  margin-top: 30px;
   border: solid 2px #62ab74;
   border-radius: 20px;
-  padding: 2%;
-  width: 86%;
-  margin-left: 5%;
-  justify-content: center;
-  cursor: pointer;
-}
-
-#formAgendamento label {
-  text-align: left;
-}
-
-.btnHolderAgendamento {
-  width: 100%;
-  margin-top: 5px;
+  padding-bottom: 10px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
 }
 
-.btnAgendamento {
-  background-color: #399045;
-  color: #020f04;
+.formAgenda {
+  margin-top: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.formAgenda input {
+  display: flex;
+  width: 80%;
+  margin-left: 10%;
+  text-align: center;
+}
+
+.formAgenda textarea {
+  width: 100%;
+  height: 150px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  text-align: left;
+  resize: none;
+}
+
+.formAgenda button {
+  background: #0065ca;
+  color: #fff;
+  font-size: larger;
   font-weight: 900;
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  max-width: 40px;
+  min-width: 40px;
+  min-height: 40px;
+  max-height: 40px;
+  margin-top: 2%;
+}
+
+.formAgendaOculta {
+  margin-top: 10px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  gap: 10px;
+}
+
+.formAgendaOculta li {
+  width: 400px;
+  display: flex;
+  flex-wrap: wrap;
+  border: solid 1px #000000;
+  font-weight: 200;
+  border-radius: 4px;
+  overflow-wrap: break-word;
+}
+
+.formAgendaOculta p {
+  margin-top: 2px;
+  margin-left: 5px;
+  margin-bottom: 2px;
+  width: 400px;
+  flex-wrap: wrap;
+}
+
+.formAgendaOculta button {
+  background-color: #e83d3d;
+  color: #fff;
+  font-weight: 900;
+  margin-bottom: 10px;
   border: none;
   border-radius: 20px;
   cursor: pointer;
-  min-width: 140px;
-  max-width: 150px;
+  min-width: 90px;
+  max-width: 100px;
   min-height: 40px;
   max-height: 50px;
 }
@@ -383,143 +425,6 @@ h2 {
   border-radius: 20px;
 }
 
-/* =====================Clientes===================== */
-
-.agendamento {
-  display: flex;
-  width: 100%;
-  height: 500px;
-}
-.formAgenda {
-  width: 50%;
-  border: solid 2px #62ab74;
-  border-radius: 20px;
-  display: flex;
-  align-items: left;
-  flex-direction: column;
-  margin-top: 10px;
-}
-
-.formAgenda label {
-  margin-left: 5%;
-}
-
-.formAgenda input {
-  display: flex;
-}
-
-input.cliente {
-  width: 90%;
-  margin-left: 5%;
-}
-
-.agendeServico {
-  width: 100%;
-  display: flex;
-}
-
-input.hora {
-  width: 23%;
-  margin-left: 5%;
-}
-
-input.servico {
-  width: 66%;
-  justify-content: right;
-}
-
-.btnPlus {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 5%;
-  margin-bottom: 5%;
-}
-
-.btnPlus button {
-  background: #0065ca;
-  color: #fff;
-  font-size: larger;
-  font-weight: 900;
-  border: none;
-  border-radius: 100px;
-  cursor: pointer;
-  max-width: 40px;
-  min-width: 40px;
-  min-height: 40px;
-  max-height: 40px;
-  margin-top: 20%;
-}
-
-.btnFechar {
-  display: flex;
-  justify-content: right;
-  margin-right: 10%;
-  margin-bottom: 15px;
-}
-
-.btnFechar button {
-  background-color: #e83d3d;
-  color: #fff;
-  font-weight: 900;
-  border: none;
-  border-radius: 20px;
-  cursor: pointer;
-  min-width: 90px;
-  max-width: 100px;
-  min-height: 40px;
-  max-height: 50px;
-  margin-top: 60%;
-}
-
-.formConsulta {
-  width: 50%;
-  margin-left: 1%;
-  border: solid 2px #62ab74;
-  border-radius: 20px;
-  align-items: right;
-  display: flex;
-  flex-direction: column;
-  margin-top: 2%;
-}
-
-#consulta {
-  display: flex;
-  width: 90%;
-  margin-left: 5%;
-  flex-wrap: wrap;
-  flex-direction: column;
-}
-
-#cliente {
-  display: flex;
-  width: 100%;
-  margin-top: 2%;
-  margin-bottom: 2%;
-  font-weight: 400;
-}
-
-#hora {
-  width: 10%;
-  margin-right: 5%;
-  align-self: center;
-  border: #62ab74;
-  font-weight: 400;
-}
-#servico {
-  width: 70%;
-}
-#consulta button {
-  width: 30px;
-  height: 30px;
-  align-self: center;
-  border-radius: 100%;
-  border: none;
-  background-color: #e83d3d;
-  color: #e3e7e4;
-  cursor: pointer;
-}
-
 /* ===================Media Querys=================== */
 @media only screen and (max-width: 680px) {
   main {
@@ -558,5 +463,14 @@ input.servico {
   #consulteAgenda img {
     width: 30px;
     height: auto;
+  }
+
+  .formAgendaOculta li {
+    width: 300px;
+  }
+
+  .formAgendaOculta p {
+    width: 300px;
+    flex-wrap: wrap;
   }
 }

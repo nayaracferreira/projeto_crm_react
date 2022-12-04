@@ -30,11 +30,15 @@ export default function DeleteButton({
   }
 
   return (
-    <div>
+    <div className="formAgendaOculta">
       <li>
         {/* <p>{emailEmpressa}</p> */}
-        <p>Dia: {diamesano}</p>
-        <p>Anotação: {nota}</p>
+        <p>
+          <b>Dia:</b> {diamesano}
+        </p>
+        <p>
+          <b>Anotação:</b> {nota}
+        </p>
       </li>
       <button onClick={eventDeletarRota}>Deletar</button>
     </div>
