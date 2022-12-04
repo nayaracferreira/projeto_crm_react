@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { AppFooter, AppHeader, Loading } from "../organisms";
 
@@ -27,14 +27,31 @@ export default function Entrar() {
           localStorage.setItem("emailLocalStorage", email);
           navigate("/agenda");
         } else {
-          <Link to={"/entrar"} onSubmit={loginClick} />;
-          window.alert("Email ou senha inválidos!");
+          window.alert("Login ou senha inválidos!");
+          navigate("/entrar");
         }
       });
 
+    //   if (data.Sucesso === true)
+    //   try {
+    //     {
+    //       localStorage.setItem("emailLocalStorage", email);
+    //       navigate("/agenda");
+    //     }
+    //   } catch (error) {
+    //     console.log(error.message);
+    //   }
+    // else {
+    //   window.alert("Login ou senha inválidos!");
+    //   navigate("/entrar");
+    // }
+
     setIsLoading(true);
   };
-
+  // else {
+  //   window.alert("Login ou senha inválidos!");
+  //   navigate("/entrar");
+  // }
   return isLoading ? (
     <Loading />
   ) : (
@@ -45,8 +62,7 @@ export default function Entrar() {
         <div id="mainEntrar" className="size-margin-90-5">
           <h2 className="textShadowTitles">Acesse a Tera Agenda</h2>
 
-          <form id="formEntrar" onSubmit={loginClick}>
-            <Link to={"/agenda"} />
+          <form action="/entrar" id="formEntrar" onSubmit={loginClick}>
             <div>
               <label htmlFor="login">Login</label>
               <input

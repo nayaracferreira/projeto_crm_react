@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { IMaskInput } from "react-imask";
 
 import { AppFooter, AppHeader } from "../organisms";
@@ -89,8 +89,7 @@ export default function Cadastro() {
       <AppHeader />
 
       <main>
-        <form className="formCadastre" onSubmit={validaSenha}>
-          <Link to={"/entrar"} />
+        <form action="/entrar" className="formCadastre" onSubmit={validaSenha}>
           <h2 className="textShadowTitles">Cadastre suas informações</h2>
           <div>
             <label htmlFor="razaoSocial">Razão Social*</label>
