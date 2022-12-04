@@ -1,105 +1,129 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { IMaskInput } from "react-imask";
 
-import { AppFooter, AppHeader, Loading } from "../organisms";
+import { AppFooter, AppHeader, DeleteButton } from "../organisms";
 
 export default function Agenda() {
-  const [isLoading, setIsLoading] = useState(true);
-  //const [empresa, setEmpresa] = useState([]);
+  // -------------------------------------------------------------------------------------------------------------------- //
 
-  useEffect(() => {
-    fetch("http://127.0.0.1:5000/empresa/all")
+  const emailTeste = "teste@com.br";
+
+  let [listaTodosValores, setlistaTodosValores] = useState([
+    { Dia: "Teste", Email: emailTeste, Nota: "Teste" },
+  ]);
+
+  let [primeiroAtiva, setprimeiroAtiva] = useState(true);
+
+  let corpoRequisicaoPegarMes = {
+    method: "POST",
+    mode: "cors",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email_da_empresa: emailTeste }),
+  };
+
+  async function PegarTudoMesComEmail() {
+    await fetch("http://127.0.0.1:5000/todomes", corpoRequisicaoPegarMes)
+      .then((response) => response.json())
+      .then((data) => setlistaTodosValores(data));
+
+    // console.log(listaTodosValores)
+  }
+
+  if (primeiroAtiva === true) {
+    PegarTudoMesComEmail();
+    setprimeiroAtiva(false);
+  }
+
+  // -------------------------------------------------------------------------------------------------------------------- //
+
+  const [valorDia, setValorDia] = useState("");
+  const [valorNota, setValorNota] = useState("");
+
+  let emailEmpresa = emailTeste;
+  let diamesano = valorDia;
+  let nota = valorNota;
+
+  let corpoRequisicaoAdicionarDia = {
+    method: "POST",
+    mode: "cors",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      dia_aser_adicionado: diamesano,
+      email_da_empresa: emailEmpresa,
+      anotacao: nota,
+    }),
+  };
+
+  async function eventAdicionarDia() {
+    await fetch(
+      "http://127.0.0.1:5000/adicionardia",
+      corpoRequisicaoAdicionarDia
+    )
       .then((response) => response.json())
       .then((data) => console.log(data));
-    setIsLoading(false);
-  }, []);
+    // .finally(console.log("Valores adicionado na tabela"));
 
-  return isLoading ? (
-    <Loading />
-  ) : (
+    PegarTudoMesComEmail();
+  }
+
+  const eventPuxarInputsDias = (Event) => {
+    // console.log("Valores dias mudados")
+    setValorDia(Event.target.value);
+
+    // console.log(this.diaAdicionado.value)
+  };
+
+  const eventPuxarInputsNotas = (Event) => {
+    // console.log("Valores de nota mudados")
+    setValorNota(Event.target.value);
+
+    // console.log(this.diaAdicionado.value)
+  };
+
+  return (
     <div className="body">
       <AppHeader />
       Link
       <main>
-        <div className="agendamento">
-          <form className="formConsulta">
-            <h2>Consulta</h2>
-            <div id="consulta">
-              <p id="cliente">Dave Grohl</p>
-              <div className="agendeServico">
-                <p id="hora">11:30</p>
-                <p id="servico">
-                  Afrouxamento das roldanas que gera perda contínua de afinação
-                  da guitarra
-                </p>
-                <button>x</button>
-              </div>
-            </div>
-            <div id="consulta">
-              <p id="cliente">Flea</p>
-              <div className="agendeServico">
-                <p id="hora">12:00</p>
-                <p id="servico">Perda de precisão na tarraxa do baixo</p>
-                <button>x</button>
-              </div>
-              <div id="consulta">
-                <p id="cliente">Tré Cool</p>
-                <div className="agendeServico">
-                  <p id="hora">14:00</p>
-                  <p id="servico">
-                    Troca de molas do pedal de Bumbo da bateria
-                  </p>
-                  <button>x</button>
-                </div>
-              </div>
-              <div id="consulta">
-                <p id="cliente">Chris Martin</p>
-                <div className="agendeServico">
-                  <p id="hora">15:30</p>
-                  <p id="servico">Desgaste entre as teclas do piano</p>
-                  <button>x</button>
-                </div>
-              </div>
-              <div id="consulta">
-                <p id="cliente">Carlos Santana</p>
-                <div className="agendeServico">
-                  <p id="hora">16:30</p>
-                  <p id="servico">Problemas no captador da guitarra</p>
-                  <button>x</button>
-                </div>
-              </div>
-            </div>
-          </form>
+        <div>
+          {/* <button onClick={PegarTudoMesComEmail}>Pegar todo Mes</button>  botaõa para teste*/}
 
-          <form className="formAgenda">
-            <h2>Agende os clientes</h2>
-            <div>
-              <label htmlFor="cliente">Cliente</label>
-              <input
-                className="cliente"
-                type="text"
-                placeholder="Nome do cliente"
-                required
-              />
-              <label htmlFor="serviço">Serviço</label>
-              <div className="agendeServico">
-                <input className="hora" type="time" required />
-                <input
-                  className="servico"
+          <div>
+            <form>
+              <label>
+                DIA:
+                <IMaskInput
+                  mask="00/00/00"
                   type="text"
-                  placeholder="Informe o serviço"
-                  required
+                  value={valorDia}
+                  onChange={eventPuxarInputsDias}
                 />
-              </div>
-            </div>
-            <div className="btnPlus">
-              <button type="onClick">+</button>
-            </div>
+              </label>
 
-            <div className="btnFechar">
-              <button type="onSubmit">Encerrar Agenda</button>
+              <label>
+                NOTA:
+                <input
+                  type="text"
+                  value={valorNota}
+                  onChange={eventPuxarInputsNotas}
+                />
+              </label>
+            </form>
+            <button onClick={eventAdicionarDia}>
+              Adicionar ao novo no Mes
+            </button>
+            <div>
+              {listaTodosValores.map((notaDeleteComp) => (
+                <DeleteButton
+                  key={notaDeleteComp.Nota}
+                  dia={notaDeleteComp.Dia}
+                  email={notaDeleteComp.Email}
+                  notaDia={notaDeleteComp.Nota}
+                  funcaoAtulizarValores={PegarTudoMesComEmail}
+                />
+              ))}
             </div>
-          </form>
+          </div>
         </div>
       </main>
       <AppFooter />

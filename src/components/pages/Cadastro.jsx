@@ -12,12 +12,12 @@ export default function Cadastro() {
   const [telefone, setTelefone] = useState([]);
   const [email, setEmail] = useState([]);
   const [cep, setCep] = useState([]);
-  const [endereco, setEndereco] = useState([]);
+  //const [endereco, setEndereco] = useState([]);
   const [numero, setNumero] = useState([]);
   const [bloco, setBloco] = useState([]);
-  const [bairro, setBairro] = useState([]);
-  const [cidade, setCidade] = useState([]);
-  const [uf, setUf] = useState([]);
+  //const [bairro, setBairro] = useState([]);
+  //const [cidade, setCidade] = useState([]);
+  //const [uf, setUf] = useState([]);
   const [cadastroSenha, setCadastroSenha] = useState({});
   const [confSenha, setConfSenha] = useState({});
   const navigate = useNavigate();
@@ -35,12 +35,12 @@ export default function Cadastro() {
         telefone: telefone,
         email: email,
         cep: cep,
-        endereco: endereco,
+        endereco: address.logradouro,
         numero: numero,
         bloco: bloco,
-        bairro: bairro,
-        cidade: cidade,
-        uf: uf,
+        bairro: address.bairro,
+        cidade: address.localidade,
+        uf: address.uf,
         senha: cadastroSenha,
       }),
     })
@@ -61,6 +61,8 @@ export default function Cadastro() {
     bairro: "",
     uf: "",
   });
+
+  //VER UseEffect
   const getCep = (event) => {
     fetch(`https://viacep.com.br/ws/${event.target.value}/json/`, {
       method: "GET",
@@ -158,8 +160,8 @@ export default function Cadastro() {
               <label htmlFor="logradouro">Endereço*</label>
               <input
                 defaultValue={address.logradouro}
-                onBlur={(event) => setEndereco(event.target.value)}
-                defaultvalue={endereco}
+                onBlur={(event) => setAddress(event.target.value)}
+                //defaultvalue={endereco}
                 name="endereco"
                 type="text"
                 placeholder="Ex:Rua Vinte e Cindo de ..."
@@ -193,8 +195,8 @@ export default function Cadastro() {
               <label htmlFor="bairro">Bairro*</label>
               <input
                 defaultValue={address.bairro}
-                onBlur={(event) => setBairro(event.target.value)}
-                defaultvalue={bairro}
+                onBlur={(event) => setAddress(event.target.value)}
+                //defaultvalue={bairro}
                 name="bairro"
                 type="text"
                 placeholder="Informe o bairro"
@@ -205,8 +207,8 @@ export default function Cadastro() {
               <label htmlFor="localidade">Cidade*</label>
               <input
                 defaultValue={address.localidade}
-                onBlur={(event) => setCidade(event.target.value)}
-                defaultvalue={cidade}
+                onBlur={(event) => setAddress(event.target.value)}
+                //defaultvalue={cidade}
                 name="cidade"
                 type="text"
                 placeholder="Informe a cidade"
@@ -217,8 +219,8 @@ export default function Cadastro() {
               <label htmlFor="uf">UF*</label>
               <input
                 defaultValue={address.uf}
-                onBlur={(event) => setUf(event.target.value)}
-                defaultvalue={uf}
+                onBlur={(event) => setAddress(event.target.value)}
+                //defaultvalue={uf}
                 name="uf"
                 type="text"
                 placeholder="Informe a UF"
