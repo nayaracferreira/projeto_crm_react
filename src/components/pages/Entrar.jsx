@@ -31,26 +31,9 @@ export default function Entrar() {
         }
       });
 
-    //   if (data.Sucesso === true)
-    //   try {
-    //     {
-    //       localStorage.setItem("emailLocalStorage", email);
-    //       navigate("/agenda");
-    //     }
-    //   } catch (error) {
-    //     console.log(error.message);
-    //   }
-    // else {
-    //   window.alert("Login ou senha inválidos!");
-    //   navigate("/entrar");
-    // }
-
     setIsLoading(true);
   };
-  // else {
-  //   window.alert("Login ou senha inválidos!");
-  //   navigate("/entrar");
-  // }
+
   return isLoading ? (
     <Loading />
   ) : (
