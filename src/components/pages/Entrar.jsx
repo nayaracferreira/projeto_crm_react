@@ -28,7 +28,6 @@ export default function Entrar() {
           navigate("/agenda");
         } else {
           window.alert("Login ou senha inválidos!");
-          navigate("/entrar");
         }
       });
 

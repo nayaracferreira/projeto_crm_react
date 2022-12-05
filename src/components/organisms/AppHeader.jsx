@@ -5,13 +5,8 @@ export default function AppHeaderHome() {
   return (
     <header>
       <nav>
-        <h1>
-          <Link
-            to="/"
-            aria-label="Tera Agenda: Encaminha para a página inicial"
-          >
-            Tera Agenda
-          </Link>
+        <h1 aria-label="Tera Agenda: Encaminha para a página inicial">
+          <Link to="/">Tera Agenda</Link>
         </h1>
       </nav>
     </header>

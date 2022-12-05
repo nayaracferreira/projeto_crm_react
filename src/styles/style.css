@@ -36,7 +36,7 @@ h1 {
   text-align: center;
   margin-top: 20px;
   margin-left: 10px;
-  color: #399045;
+  color: #2a5630;
   font-size: 40px;
   /* text-shadow: 2px 2px #2d392d8f; */
   min-width: 240px;
@@ -45,7 +45,7 @@ h1 {
 nav a {
   width: 50%;
   height: 50%;
-  color: #399045;
+  color: #2a5630;
   text-align: center;
   margin-top: 25px;
   text-decoration: none;
@@ -117,7 +117,7 @@ main img {
 
 h2,
 h3 {
-  color: #75db8f;
+  color: #2a5630;
   text-align: center;
   margin-top: 5px;
   margin-bottom: 2%;
@@ -145,8 +145,8 @@ h3 {
 }
 
 .btnAcesso {
-  background-color: #399045;
-  color: #020f04;
+  background-color: #2a5630;
+  color: #fff;
   font-weight: 900;
   border: none;
   border-radius: 20px;
@@ -230,16 +230,16 @@ h3 {
   overflow-wrap: break-word;
 }
 
-.formAgendaOculta p {
+.formAgendaOculta ul {
   margin-top: 2px;
   margin-left: 5px;
   margin-bottom: 2px;
-  width: 400px;
+  width: 390px;
   flex-wrap: wrap;
 }
 
 .formAgendaOculta button {
-  background-color: #e83d3d;
+  background-color: #ae4040;
   color: #fff;
   font-weight: 900;
   margin-bottom: 10px;
@@ -314,8 +314,8 @@ h3 {
 }
 
 .btnEnviar {
-  background-color: #399045;
-  color: #020f04;
+  background-color: #2a5630;
+  color: #fff;
   font-weight: 900;
   border: none;
   border-radius: 20px;
@@ -372,7 +372,7 @@ footer h3 {
 }
 
 #faleConosco {
-  color: #399045;
+  color: #2a5630;
   font-size: larger;
 }
 
@@ -390,7 +390,7 @@ footer h3 {
 
 /* ================CLASSES UNICAS================ */
 h2 {
-  color: #399045;
+  color: #2a5630;
   /* text-shadow: 1px 1px #2d392d8f; */
 }
 
